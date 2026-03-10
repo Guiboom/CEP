@@ -23,11 +23,13 @@ formulario.addEventListener("submit", async (evento) => {
         resultado.innerHTML+="regiao: "+dados.regiao+"<br>";
         resultado.innerHTML+="uf: "+dados.uf+"<br>";
         resultado.innerHTML+="Bairro: "+dados.bairro;
+        https://geocoding-api.open-meteo.com/v1/search?name=rio+do+sul&count=1&language=pt&format=json&countryCode=BR
+
     }
     console.log(endereco)
     
-    } catch {
-
+    } catch (error) {
+        resultado.innerHTML("Erro ao consultar o CEP")
     }
 
 });

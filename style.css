@@ -1,0 +1,86 @@
+/* 
+@import url('https://fonts.googleapis.com/css2?family=Rawline:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+
+:root {
+    --primary-blue: #004182;
+    --secondary-blue: #1351b4;
+    --light-gray: #f8f8f8;
+    --border-gray: #ccc;
+    --text-dark: #333;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#CepForm {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    border-top: 4px solid var(--primary-blue);
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--primary-blue);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-gray);
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+
+input[type="text"]:focus {
+    outline: 2px solid var(--secondary-blue);
+    border-color: transparent;
+}
+
+button {
+    width: 100%;
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 20px; 
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background-color: var(--secondary-blue);
+}
+
+#resultado {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #e9f2f9;
+    border-left: 4px solid var(--secondary-blue);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    display: none; 
+}
+
+
+#resultado:not(:empty) {
+    display: block;
+} */
