@@ -29,8 +29,11 @@ formulario.addEventListener("submit", async (evento) => {
         const dadosGeoJson = await dadosGeo.json();
         if(dadosGeoJson.results && dadosGeoJson.length>0){
             const {latitude,longitude} = dadosGeoJson.results[0];
-            
+            console.log(latitude)
+            console.log(longitude)
 
+        }else{
+            console.log("Não entrou")
         }
 
     }
