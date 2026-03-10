@@ -23,7 +23,15 @@ formulario.addEventListener("submit", async (evento) => {
         resultado.innerHTML+="regiao: "+dados.regiao+"<br>";
         resultado.innerHTML+="uf: "+dados.uf+"<br>";
         resultado.innerHTML+="Bairro: "+dados.bairro;
-        https://geocoding-api.open-meteo.com/v1/search?name=rio+do+sul&count=1&language=pt&format=json&countryCode=BR
+        const cidade = dados.localidade
+        const dadosGeo = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cidade)}&count=1&language=pt&format=json&countryCode=BR `);
+        /* https://geocoding-api.open-meteo.com/v1/search?name=rio+do+sul&count=1&language=pt&format=json&countryCode=BR */
+        const dadosGeoJson = await dadosGeo.json();
+        if(dadosGeoJson.results && dadosGeoJson.length>0){
+            const {latitude,longitude} = dadosGeoJson.results[0];
+            
+
+        }
 
     }
     console.log(endereco)
