@@ -58,16 +58,6 @@ button:hover{
     box-shadow:0 4px 10px rgba(0,0,0,0.1);
     font-size:14px;
     line-height:1.6;
-}
-
-#resultado{
-    margin-top:15px;
-    background:white;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    font-size:14px;
-    line-height:1.6;
     text-align:center;
 }
 
