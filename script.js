@@ -9,7 +9,8 @@ formulario.addEventListener("submit", async (evento) => {
         alert("CEP inválido, digite apenas 8 caracteres");
         return;
     }
-    resultado.innerHTML = "Buscando...";
+    /* resultado.innerHTML = "Buscando..."; */
+    resultado.innerHTML = "<img src='gifLoading.gif' alt='Buscando...'>"
     try {
         const endereco = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
         const dados = await endereco.json();
@@ -21,20 +22,25 @@ formulario.addEventListener("submit", async (evento) => {
             const dadosGeo = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cidade)}&count=1&language=pt&format=json&countryCode=BR `);
             /* https://geocoding-api.open-meteo.com/v1/search?name=rio+do+sul&count=1&language=pt&format=json&countryCode=BR */
             const dadosGeoJson = await dadosGeo.json();
-            if (dadosGeoJson.results && dadosGeoJson.length > 0) {
+            if (dadosGeoJson.results && dadosGeoJson.results.length > 0) {
                 const { latitude, longitude } = dadosGeoJson.results[0];
                 /* console.log(latitude)
                 console.log(longitude) */
                 /* https://api.open-meteo.com/v1/forecast?latitude=-27.2142&longitude=-49.6431&current_weather=true */
-                const clima = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=-${laltitude}&longitude=-${longitude}&current_weather=true`);
+                const clima = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`);
                 const climaJson = await clima.json();
+                console.log(climaJson);
+                const temperatura = climaJson.current_weather.temperature;
+                const velocVento = climaJson.current_weather.windspeed;
+                const resultadoClima = "<br>Temperatura: " + temperatura + "°C" + "<br>" + "Velocidade do vento: " + velocVento + "Km/h."
+                resultado.innerHTML = resultadoCEP + resultadoClima
             } else {
                 console.log("Não entrou")
             }
-            resultado.innerHTML = resultadoCEP
+
         }
         console.log(endereco)
     } catch (error) {
-        resultado.innerHTML("Erro ao consultar o CEP")
+        resultado.innerHTML =("Erro ao consultar o CEP")
     }
 });
