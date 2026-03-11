@@ -16,13 +16,7 @@ formulario.addEventListener("submit", async (evento) => {
         if (dados.erro) {
             resultado.innerHTML = "CEP inválido";
         } else {
-            resultado.innerHTML = "Rua: " + dados.logradouro + "<br>";
-            resultado.innerHTML += "Cidade: " + dados.localidade + "<br>";
-            resultado.innerHTML += "Estado: " + dados.estado + "<br>";
-            resultado.innerHTML += "DDD: " + dados.ddd + "<br>";
-            resultado.innerHTML += "regiao: " + dados.regiao + "<br>";
-            resultado.innerHTML += "uf: " + dados.uf + "<br>";
-            resultado.innerHTML += "Bairro: " + dados.bairro;
+            const resultadoCEP = "Rua: " + dados.logradouro + "<br>" + "Cidade: " + dados.localidade + "<br>" + "Estado: " + dados.estado + "<br>" + "DDD: " + dados.ddd + "<br>" + "regiao: " + dados.regiao + "<br>" + "uf: " + dados.uf + "<br>" + "Bairro: " + dados.bairro;
             const cidade = dados.localidade
             const dadosGeo = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cidade)}&count=1&language=pt&format=json&countryCode=BR `);
             /* https://geocoding-api.open-meteo.com/v1/search?name=rio+do+sul&count=1&language=pt&format=json&countryCode=BR */
@@ -37,12 +31,10 @@ formulario.addEventListener("submit", async (evento) => {
             } else {
                 console.log("Não entrou")
             }
-
+            resultado.innerHTML = resultadoCEP
         }
         console.log(endereco)
-
     } catch (error) {
         resultado.innerHTML("Erro ao consultar o CEP")
     }
-
 });
